@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        .container{
+            padding:10px;
+            width:400px;
+            height:400px;
+            margin:auto;
+            display:flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: gray;
+        }
+        .results{
+            flex:1.5;
+            display:flex;
+            flex-direction: column;
+            height:50px;
+            margin-bottom:10px;
+         }
+        .result{
+            border:none;
+            margin:5px;
+            text-align: right;
+            font-size: 1.8em;
+        }
+        .rs-2{
+            margin-top:-6px;
+        }
+        .buttons{
+            display:flex;
+            flex:1;
+            justify-content: space-between;
+        }
+        .button{
+            flex:1;
+            margin:5px;
+            text-align: center;
+            font-size:1.5em;
+            width:30px;
+        }
+        .bg{
+            border-radius: 5px;
+        }
+        .bg-2{
+            border-radius:10px;
+            border:2px solid black;
+        }
+        .pink{
+            background-color: pink;
+        }
+        .blue{
+            background-color: lightblue;
+        }
+    </style>
+    <body>
+        <div class="container bg-2">
+            <div class="results">
+                <input type="text" class="result bg-1" id="resultInput">
+                <input type="text" class="result rs-2 bg-1" id="resultInput2">
+            </div>
+            <div class="buttons">
+                <button class="button bg pink" onclick="buttonHandler(this)">CLEAR</button>
+                <button class="button bg blue" onclick="buttonHandler(this)">DELETE</button>
+            </div>
+            <div class="buttons">
+                <button class="button bg" onclick="buttonHandler(this)">7</button>
+                <button class="button bg" onclick="buttonHandler(this)">8</button>
+                <button class="button bg" onclick="buttonHandler(this)">9</button>
+                <button class="button bg" onclick="buttonHandler(this)">:</button>
+            </div>
+            <div class="buttons">
+                <button class="button bg" onclick="buttonHandler(this)">4</button>
+                <button class="button bg" onclick="buttonHandler(this)">5</button>
+                <button class="button bg" onclick="buttonHandler(this)">6</button>
+                <button class="button bg" onclick="buttonHandler(this)">x</button>
+            </div>
+            <div class="buttons">
+                <button class="button bg" onclick="buttonHandler(this)">1</button>
+                <button class="button bg" onclick="buttonHandler(this)">2</button>
+                <button class="button bg" onclick="buttonHandler(this)">3</button>
+                <button class="button bg" onclick="buttonHandler(this)">-</button>
+            </div>
+            <div class="buttons">
+                <button class="button bg" onclick="buttonHandler(this)">.</button>
+                <button class="button bg" onclick="buttonHandler(this)">0</button>
+                <button class="button bg" onclick="buttonHandler(this)">=</button>
+                <button class="button bg" onclick="buttonHandler(this)">+</button>
+            </div>
+        </div>
+    </body>
+    <script>
+        let number1 = "";
+        let number2 = "";
+        let ptr
+        
+        // let hello = buttonHandler(btn);
+        function buttonHandler(btn){
+            const pressedValue = btn.innerText;
+
+            const resultInput = document.getElementById('resultInput');
+            const resultInput2 = document.getElementById('resultInput2');
+
+            if(isNaN(pressedValue)){
+                if(pressedValue == 'CLEAR')
+                {
+                    number1 = "";
+                    number2 = "";
+                    ptr = undefined;
+                    resultInput2.value = "";
+                    resultInput.value = "";
+                    return;
+                }
+                if(pressedValue == '=')
+                {
+                    const result = perform(number1, number2, ptr);
+                    const caculator = calc(number1, number2, ptr);
+                    resultInput2.value = result;
+                    resultInput.value = caculator;
+                    number1 = "";
+                    number2 = "";
+                    ptr = undefined;
+                } else {
+                    ptr = pressedValue;
+                }
+            } else if(pressedValue == 'DELETE'){
+
+            } else {
+                if(ptr){
+                    number2 += pressedValue
+                    resultInput.value = number2
+                } else {
+                    number1 += pressedValue
+                    resultInput.value = number1
+                }
+            } 
+        }
+
+        function perform(number1, number2, ptr){
+            number1 = Number(number1)
+            number2 = Number(number2)
+            
+            switch(ptr)
+            {
+                case '+': return number1 + number2; 
+                case '-': return number1 - number2; 
+                case 'x': return number1 * number2; 
+                case ':': return number1 / number2;           
+            }
+        }
+        function calc(number1, number2, ptr){
+            number1 = Number(number1)
+            number2 = Number(number2)
+            
+            switch(ptr)
+            {
+                case '+': return number1 + '+' + number2 + '='; 
+                case '-': return number1 + '-' + number2 + '='; 
+                case 'x': return number1 + '*' + number2 + '='; 
+                case ':': return number1 + '/' + number2 + '=';           
+            }
+        }
+    </script>
+</html>

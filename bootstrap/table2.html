@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body{
+                background-color: rgb(192, 8, 192);
+                display:flex;
+                justify-content: center;
+                flex-direction:column;
+            }
+            thead{
+                background-color: rgb(36, 2, 36);
+                color:white;
+                border-top-left-radius:5px;
+                border-top-right-radius:5px;
+            }
+            tr, td, th{
+                padding:20px;
+            }
+            table{
+                border-collapse:collapse;
+            }
+            #total{
+                background-color: white;
+                padding:20px;
+            }
+        </style>
+    </head>
+    <body>
+            <div>
+                <lable for="">Date</lable>
+                <input type="number" id="Date">
+            </div>
+            <div>
+                <lable for="">Date</lable>
+                <input type="number" id="Order">
+            </div>
+            <div>
+                <lable for="">Name</lable>
+                <input type="text" id="Name">
+            </div>
+            <div>
+                <lable for="">Price</lable>
+                <input type="number" id="Price">
+            </div>
+            <div>
+                <lable for="">Quantity</lable>
+                <input type="number" id="Quantity">
+            </div>
+            <div>
+                <button onclick="add()">Submit</button>
+            </div>
+
+        <table class="table" id="table">
+            <thead>
+                <tr>
+                    <th class="confirm"><button onclick="confirm()">Confirm</button> <br><input type="checkbox" onclick="selectionAll()"></th><th>Date</th><th>Date</th><th>Date</th><th>Price</th><th>Quantity</th><th>Total</th><th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="menu">
+            </tbody>
+        </table> 
+        <div id="total">Total: </div>
+        <script>
+            let sum = 0; 
+            let object = [
+                {
+                    "Date" : "2017-09-29 01:22",
+                    "Order" : "200398",
+                    "Name" : "IPhone X 64GB Grey",
+                    "Price" : "999.00",
+                    "Quantity" : "1",
+                    "Total" : "999.00",
+                },
+                {
+                    "Date" : "2017-09-29 01:22",
+                    "Order" : "200398",
+                    "Name" : "IPhone X 64GB Grey",
+                    "Price" : "999.00",
+                    "Quantity" : "1",
+                    "Total" : "999.00",
+                },
+                {
+                    "Date" : "2017-09-29 01:22",
+                    "Order" : "200398",
+                    "Name" : "IPhone X 64GB Grey",
+                    "Price" : "999.00",
+                    "Quantity" : "1",
+                    "Total" : "999.00",
+                },
+                {
+                    "Date" : "2017-09-29 01:22",
+                    "Order" : "200398",
+                    "Name" : "IPhone X 64GB Grey",
+                    "Price" : "999.00",
+                    "Quantity" : "1",
+                    "Total" : "999.00",
+                },
+                {
+                    "Date" : "2017-09-29 01:22",
+                    "Order" : "200398",
+                    "Name" : "IPhone X 64GB Grey",
+                    "Price" : "999.00",
+                    "Quantity" : "1",
+                    "Total" : "999.00",
+                },
+                {
+                    "Date" : "2017-09-29 01:22",
+                    "Order" : "200398",
+                    "Name" : "IPhone X 64GB Grey",
+                    "Price" : "999.00",
+                    "Quantity" : "1",
+                    "Total" : "999.00",
+                },
+            ]
+            var data = [];
+            function add(){
+                let itemDate = document.getElementById("Date").value;
+                let itemOrder = document.getElementById("Order").value;
+                let itemName = document.getElementById("Name").value;
+                let itemPrice = document.getElementById("Price").value;
+                let itemQuantity = document.getElementById("Quantity").value;
+                let total = document.getElementById('total');    
+
+                let item = {
+                    Date : itemDate,
+                    Order : itemOrder,
+                    Name : itemName,
+                    Price : itemPrice,
+                    Quantity : itemQuantity,
+                };
+                if(document.getElementById('Date').value == ""&&
+                   document.getElementById('Name').value == ""&&
+                   document.getElementById('Order').value == ""&&
+                   document.getElementById('Price').value == ""&&
+                   document.getElementById('Quantity').value == "")
+                {
+                    alert('sai');
+                } else {
+                    data.push(item);
+                    let count;
+                    show();
+                    data.splice(count,1);
+                    clear();
+                }
+                
+            }
+
+            function show(){
+                        let tbody = document.getElementById('menu');
+                        let tr = document.createElement('tr');
+                        let td0 = document.createElement('td');
+                        let td1 = document.createElement('td');
+                        let td2 = document.createElement('td');
+                        let td3 = document.createElement('td');
+                        let td4 = document.createElement('td');
+                        let td5 = document.createElement('td');
+                        let td6 = document.createElement('td');
+                        let td7 = document.createElement('td');
+                        let btn = document.createElement('button');
+                        let txt7 = document.createTextNode('Delete');
+                        btn.appendChild(txt7);
+                        td7.appendChild(btn);
+            
+                        for(let i = 0; i < data.length; i ++){
+
+                            let checkBox = document.createElement('input');
+                            checkBox.setAttribute('type', 'checkbox');
+                            checkBox.setAttribute('class', 'stick' );
+                            td0.appendChild(checkBox);
+
+                            let txt1 = document.createTextNode(data[i].Date);
+                            td1.appendChild(txt1);
+
+                            let txt2 = document.createTextNode(data[i].Order);
+                            td2.appendChild(txt2);
+
+                            let txt3 = document.createTextNode(data[i].Name);
+                            td3.appendChild(txt3);
+                            
+                            let txt4 = document.createTextNode('$' + data[i].Price);
+                            td4.appendChild(txt4);
+
+                            let txt5 = document.createTextNode(data[i].Quantity);
+                            td5.appendChild(txt5);
+
+                            let txt6 = document.createTextNode('$' + data[i].Quantity * data[i].Price);
+                            td6.appendChild(txt6);
+
+                        if(i % 2 !== 0){
+                            tr.style.backgroundColor = "rgb(225, 222, 222)";
+                        }else tr.style.backgroundColor = "white";
+                            count = i;
+
+                            // let param = 'tr' + i;
+                            // tr.setAttribute('id', param);
+                            btn.addEventListener('click', function () {deleteItem(event)})
+                        }
+
+                        tr.appendChild(td0);
+                        tr.appendChild(td1);
+                        tr.appendChild(td2);
+                        tr.appendChild(td3);
+                        tr.appendChild(td4);
+                        tr.appendChild(td5);
+                        tr.appendChild(td6);
+                        tr.appendChild(td7);
+
+                        tbody.appendChild(tr);
+                        object.push(data);
+                        confirm();
+
+                        sum += parseInt(object[i].Quantity) * object[i].Price;
+                    }
+
+            for(let i = 0; i < object.length; i ++){
+                let tbody = document.getElementById('menu');
+                let tr = document.createElement('tr');
+
+                let td0 = document.createElement('td');
+                let checkBox = document.createElement('input');
+                checkBox.setAttribute('type', 'checkbox');
+                checkBox.setAttribute('class', 'stick' );
+                td0.appendChild(checkBox);
+
+                let td1 = document.createElement('td');
+                let txt1 = document.createTextNode(object[i].Date);
+                td1.appendChild(txt1);
+
+                let td2 = document.createElement('td');
+                let txt2 = document.createTextNode(object[i].Order);
+                td2.appendChild(txt2);
+
+                let td3 = document.createElement('td');
+                let txt3 = document.createTextNode(object[i].Name);
+                td3.appendChild(txt3);
+                
+                let td4 = document.createElement('td');
+                let txt4 = document.createTextNode('$' + object[i].Price);
+                td4.appendChild(txt4);
+
+                let td5 = document.createElement('td');
+                let txt5 = document.createTextNode(object[i].Quantity);
+                td5.appendChild(txt5);
+
+                let td6 = document.createElement('td');
+                let txt6 = document.createTextNode('$' + object[i].Price * object[i].Quantity);
+                td6.appendChild(txt6);
+
+                let td7 = document.createElement('td');
+                let btn = document.createElement('button');
+                let txt7 = document.createTextNode('Delete');
+                btn.appendChild(txt7);
+                td7.appendChild(btn);
+                
+                if(i % 2 !== 0){
+                    tr.style.backgroundColor = "rgb(225, 222, 222)";
+                }else tr.style.backgroundColor = "white";
+
+                tr.appendChild(td0);
+                tr.appendChild(td1); 
+                tr.appendChild(td2);
+                tr.appendChild(td3);
+                tr.appendChild(td4);
+                tr.appendChild(td5);
+                tr.appendChild(td6);
+                tr.appendChild(td7);
+
+                // let param = 'tr' + i;
+                // tr.setAttribute('id', param);
+                btn.addEventListener('click', function () {deleteItem(event)})
+                tbody.appendChild(tr);
+
+                checkBox.addEventListener('click', selection);
+
+                sum += parseInt(object[i].Quantity) * object[i].Price;
+     
+            }
+            
+            total.textContent = "Total:" + "$" + sum;
+
+            function selectionAll(){
+                let inp = document.getElementsByClassName('stick');
+                for(let i = 0; i < inp.length; i ++){
+                    inp[i].setAttribute('checked', true);
+                }
+            }
+
+            function confirm(){
+                let inp = document.getElementsByClassName('stick');
+                for(let i = 0; i < inp.length; i ++){
+
+                    if(inp[i].getAttribute('checked', true)){
+                        event = inp[i];
+                        let td = event.parentNode;
+                        let tr = td.parentNode;
+                        tr.remove();
+                    }
+                }
+            }
+            
+            function clear(){
+                document.getElementById('Date').value = "";
+                document.getElementById('Name').value = "";
+                document.getElementById('Order').value = "";
+                document.getElementById('Price').value = "";
+                document.getElementById('Quantity').value = "";
+            }
+
+
+            function deleteItem(event){
+                let that = event.currentTarget;
+                let td = that.parentNode;
+                let tr = td.parentNode;
+                tr.remove();
+            }   
+            function selection(event){
+                let that = event.currentTarget;
+                that.setAttribute('checked', true);
+            }
+            
+            
+        </script>
+    </body>
+</html>

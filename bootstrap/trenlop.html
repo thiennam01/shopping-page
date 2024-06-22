@@ -1,0 +1,179 @@
+<!--
+    Tạo hàm có 2 tham số
+    Truyền vào họ và tên sau đó gọi hàm để hiển thị ra console.log
+-->
+<html>
+    <body>
+        <script>
+            // function hoten(ho, ten){
+            //     console.log('ho ten la:'+ ho + ten);
+            // }
+            // hoten('Nguyen', 'An');
+            // let str = 'text';
+            // let str1 = 'I dont care'
+            // let str2 = str + ' ' + str1;
+            // let ho = 'Nguyen';
+            // let ten = 'An';
+            // let hoten = 'Toi ten la' + ho + ten;
+            //sử dụng template string
+            // let hoten1 = `Toi ten la ${ho} ${ten}`;
+            // console.log(hoten1.length)
+            //Lấy kí tự đầu tiên của chuỗi họ tên 1
+            // console.log(hoten1.charAt(0))
+            //lấy ra từ ten trong chuỗi hoten1
+            // console.log(hoten1.slice(,)); 
+            // console.log(hoten1.substring(0));   
+            // let space ='     toi ten la    ' + ten;
+            // console.log(space.trimStart.trimEnd());
+            // let arr = [1,2,3,4,5];
+            // console.log(arr[2]);
+            // let arr = new Array(1,2,3,4,5);
+            // arr.push(25);
+            // console.log(arr);
+            // let arr3 = [1, 2, 3];
+            // let arr4 = ['a', 'b', 'c'];
+            // let arr5 = arr3.concat(arr4);
+            // let arr6 = ['1a', '2b', '3c'];
+            // console.log(arr5);
+            // Them vào mảng với splice 
+            // arr6.splice(1, 2, '4d');
+            // console.log(arr6);
+            // for(i = 0; i < arr3.length; i++){
+            //     console.log(arr3[i]);
+            // }
+            // bai : 1
+            // let arr4 = [];
+            // let arr3 = [1, 2, 3, 4, 5, 6, 33];
+            // for(i = 0; i < arr3.length; i++){
+            //     if(i % 2 == 0)
+            //     arr4.push(arr3[i]);
+            // }
+            // console.log(arr4);
+            // console.log("/n");
+            // let arr5 = [];
+            // for(i = 0; i < arr3.length; i++){
+            //     if(i % 2 == 1) 
+            //     arr5.splice(1,0,arr3[i]);
+            // }
+            // console.log(arr5);
+            // bai : 3
+            // let n = 0;
+            // let arr3 = [1, 2, 3, 4, 5, 6];
+            // for(i = 0; i < arr3.length; i++){
+            //     n = n + arr3[i];
+            // }
+            // console.log(n);
+            // bai : 2
+            // let arr3 = [6, 10, 8, 2, 1, 100, -100];
+            // max = arr3[0];
+            // for(i = 0; i < arr3.length; i++){
+            //     if(arr3[i] > max)
+            //     max = arr3[i];
+            // }
+            // console.log(max);
+            // min = arr3[0];
+            // for(i = 0; i < arr3.length; i ++){
+            //     if(min > arr3[i])
+            //     min = arr3[i];
+            // }
+            // console.log(min);
+//;;';;;;;;'
+            // let diem = 4;
+            // if(diem <= 10){
+            //     console.log('Gioi');
+            // }else if(diem <= 9){
+            //     console.log('Kha');
+            // }else if(diem <= 7){
+            //     console.log('Trung binh');
+            // }else if(diem <= 5){
+            //     console.log('Yeu');
+            // }
+            //switch
+            //chọn ra điều kiện đúng từ nhiều điều kiện
+            // let diem = 5; 
+            // switch(diem){
+            //     case 10 : console.log('Gioi');
+            //     break; 
+            //     case 8 : console.log('Kha');
+            //     break;
+            //     case 5 : console.log('Trung binh');
+            //     break;
+            //while
+            // let i = 0;
+            // while( i <= 10) {
+            //     console.log(i);
+            //     i++;
+            // }
+            //do, while
+            // do{
+            //     console.log(i); i++;
+            // }while(i <= 10)
+            // let dog = {
+            //     eye : "brown",
+            //     leather: 'black',
+            // }
+            // console.log(dog.weight);
+            // dog.weight = 50;
+            // console.log(dog.weight);
+            // let dog = new Object();
+            // dog.eye = 'brown';
+            // dog.leather = 'black';
+            // console.log(dog);
+            // let dog = {
+            //     eye: 'brown',
+            //     leather: 'black',
+            //     run : function() {
+            //         console.log(" I'm running");
+            //     },
+            //     info: function(){
+            //         let text = "i'm a" + this.leather + "dog";
+            //         console.log(text);
+            //     },
+            //     myDog: {
+            //         eye: 'yellow',
+            //         leather: 'white',
+            //     }
+            // }
+            // dog.info();
+            // //xóa 1 thuộc tính đói tượng
+            // delete dog.eye;
+            // console.log(dog.myDog);
+            // //định nghĩa chung cho hàm khởi tạo 
+            // //Dog, Cat --> Animals
+            // function Animals(eye,leather){
+            //     this.eye = eye;
+            //     this.leather = leather;
+            // }
+            // //tạo đói tượng mới từ Animals
+            // let dog2 = new Animals('brown', 'black');
+            // console.log(dog2);
+    //viết 1 đối tượng tính toán có thuộc tính là 2 số 
+    // 4 phương thức cộng trừ nhân chia 
+    //Khi tạo đối tượng thì truyền vào 2 giá trị sau đó phương thức tính toán se trả về kết quả 
+            function Caculator(number1, number2){
+                this.number1 = number1;
+                this.number2 = number2;
+                this.plus = function(){
+                    let plus = number1 + number2;
+                    return plus;
+                };                
+                this.divide = function(){
+                    let divide = number1 / number2;
+                    console.log(divide);
+                };
+                this.times = function(){
+                    let times = number1 * number2;
+                    console.log(times);
+                };
+                this.minus = function(){
+                    let minus = number1 - number2; 
+                    console.log(minus);
+                };
+            }
+            let hello = new Caculator(2, 4);
+            console.log(hello.plus());
+            
+            
+        </script>
+    </body>
+</html>

@@ -1,0 +1,17 @@
+body {
+  background-color: blue;
+}
+
+.success, .error {
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #333;
+}
+
+.error {
+  border-color: yellow;
+}
+
+.success {
+  border-color: red;
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            table,tr,td,th{
+                            border:1px solid black;
+                            border-collapse: collapse;
+                            padding:20px;
+                        }
+        </style>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <th>ID</th><th>Password</th><th>Sex</th><th>Nation</th>
+
+            </thead>
+            <tbody id="menu">
+
+            </tbody>
+        </table>
+        <script>
+            // let information3 = JSON.parse(localStorage.getItem('information'));
+            // let tbody = document.getElementById('menu');
+            //             let tr = document.createElement('tr');
+            //             let td1 = document.createElement('td');
+            //             let txt1 = document.createTextNode(information3[0].id);
+
+            //             let td2 = document.createElement('td');
+            //             let txt2 = document.createTextNode(information3[0].password);
+
+            //             let td3 = document.createElement('td');
+            //             let txt3 = document.createTextNode(information3[0].sex);
+
+            //             let td4 = document.createElement('td');
+            //             let txt4 = document.createTextNode(information3[0].nation);
+
+            //             td1.appendChild(txt1);
+            //             td2.appendChild(txt2);
+            //             td3.appendChild(txt3);
+            //             td4.appendChild(txt4);
+
+            //             tr.appendChild(td1);
+            //             tr.appendChild(td2);
+            //             tr.appendChild(td3);
+            //             tr.appendChild(td4);
+
+            //             tbody.appendChild(tr);
+            user = localStorage.getItem('user');
+            user = JSON.parse(user);
+            for(let i = 0; i < user.length; i ++){
+                let tbody = document.getElementById('menu');
+                let tr = document.createElement('tr');
+                let td1 = document.createElement('td');
+                let txt1 = document.createTextNode(user[i].id);
+
+                let td2 = document.createElement('td');
+                let txt2 = document.createTextNode(user[i].password);
+
+                let td3 = document.createElement('td');
+                let txt3 = document.createTextNode(user[i].sex);
+
+                let td4 = document.createElement('td');
+                let txt4 = document.createTextNode(user[i].nation);
+
+                td1.appendChild(txt1);
+                td2.appendChild(txt2);
+                td2.appendChild(txt3);
+                td2.appendChild(txt4);
+
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+                tr.appendChild(td3);
+                tr.appendChild(td4);
+
+                tbody.appendChild(tr);
+
+            }
+            console.log(user);
+            
+        </script>
+    </body>
+</html>

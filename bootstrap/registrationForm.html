@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body{
+                min-height:800px;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                gap:10px;
+                line-height: 10px;
+            }
+            div{
+                display:flex;
+                width:400px;
+                align-items: center;
+            }
+            label{
+                flex:1.2;
+            }
+            input{
+                flex:5;
+            }
+            select{
+                flex:5;
+                color:blue;
+            }
+            #sex{
+                /* flex:none; */
+                
+            }
+            #language{
+                /* flex:none; */
+            }
+            .about{
+                flex:3;
+                padding:60px;
+            }
+            .submit{
+                margin:auto;
+                width:80px;
+                height:30px;
+                border-radius:5px;
+                font-size:17px;;
+            }
+            span{
+                color:red;
+                font-weight: bold;
+            }
+            table,tr,td,th{
+                            border:1px solid black;
+                            border-collapse: collapse;
+                            padding:20px;
+                        }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h1>Registration Form</h1>
+        </div>
+        <div>
+            <label for="">User id:</label><input type="text" name="name" id="id" >
+        </div>
+        <div id="id-show"></div>
+        <div>
+            <label for="">Password:</label><input type="text" name="password" id="password">
+        </div>
+        <div id="password-show"></div>
+        <div>
+            <label for="">Name:</label><input type="text" id="name">
+        </div>
+        <div id="name-show"></div>
+        <div>
+            <label for="">Adress:</label><input type="text" id="adress">
+        </div>
+        <div id="adress-show"></div>
+        <div>
+            <label for="">Country:</label><select id="select">
+                <option value="VietNam">VietNam</option><option value="America">America</option><option value="Cambodia">Cambodia</option>
+            </select>
+        </div>
+        <div id=""></div>
+        <div>
+            <label for="">ZIP Code:</label><input type="text" id="zipCode">
+        </div>
+        <div id="zipCode-show"></div>
+        <div>
+            <label for="">Email:</label><input type="text" id="email">
+        </div>
+        <div id="email-show"></div>
+        <div>
+            <label for="">Sex:</label><input class="sex" value="Male" type="radio" name="sex"><lable class="sex" for="">Male</lable><input class="sex" value="Female" type="radio" name="sex"><lable class="sex" for="">Female</lable>
+        </div>
+        <div id="sex-show"></div>
+        <div>
+            <label for="">language:</label><input id="language" type="radio" name="language"><lable class="language" for="">English</lable><input class="language" type="radio" name="language"><lable class="language" for="">Non English</lable>
+        </div>
+        <div id=""></div>
+        <div>
+            <label for="">About:</label><input type="text" class="about" id="about">
+        </div>
+        <div id="about-show"></div>
+        <button class="submit" onclick="submit()">Submit</button>
+
+        <table>
+            <thead>
+                <th>ID</th><th>Password</th><th>Sex</th><th>Nation</th>
+
+            </thead>
+            <tbody id="menu">
+
+            </tbody>
+        </table>
+        <script>
+            // let id = document.getElementById('id');
+            // let passWord = document.getElementById('password');
+            // let name = document.getElementById('name');
+            // let adress = document.getElementById('adress');
+            // let country = document.getElementById('country');
+            // let zipCode = document.getElementById('zipCode');
+            // let email = document.getElementById('email');
+            // // let sex = document.getElementById('sex');
+            // // let language = document.getElementById('language');
+            // let about = document.getElementById('about');
+            
+
+            function submit(){
+                let idValue  = document.getElementById('id').value;
+                let passWordValue = document.getElementById('password').value;
+                // let name = document.getElementById('name');
+                // let adress = document.getElementById('adress');
+                // let country = document.getElementById('country');
+                // let zipCode = document.getElementById('zipCode');
+                // let email = document.getElementById('email');
+                // // let sex = document.getElementById('sex');
+                // // let language = document.getElementById('language');
+                // let about = document.getElementById('about');
+                
+                // var data = new Array();
+                // data[0] = document.getElementById('id').value;
+                // data[1] = document.getElementById('password').value;
+                
+                // var myerror = new Array();
+                // my error[0] = "<span style = 'color:red, font-weight:bold'>5 den 12 ki tu</span>"
+                // my error[1] = "<span style = 'color:red, font-weight:bold'>4 den 13 ky tu</span>"
+
+                // var nearby = new Array("id-show","password-show");
+
+                
+                var data = new Array();
+                data[0] = document.getElementById('id').value;
+                data[1] = document.getElementById('password').value;
+                data[2] = document.querySelector('.sex:checked').value;
+                data[3] = document.getElementById('select').value;
+                
+                var myerror = new Array();
+                myerror[0] = "<span>5 den 12 ki tu</span>"
+                myerror[1] = "<span>4 den 13 ky tu</span>"
+
+                var nearby = new Array("id-show","password-show");
+
+                    var id_in = '';
+                    var password_in = '';
+                    // var sex_in = '';
+                    // var nation_in = '';
+                    
+                    
+                        if(data[0].length < 5 || data[0].length > 12){
+                        document.getElementById(nearby[0]).innerHTML = myerror[0];
+                        }else {
+                            document.getElementById(nearby[0]).innerHTML = "";
+                            id_in = data[0];
+                            sex_in = data[2];
+                            nation_in = data[3];
+                        }
+
+                        if(data[1].length < 5 || data[1].length > 12){
+                            document.getElementById(nearby[1]).innerHTML = myerror[1];
+                        }else {
+                            document.getElementById(nearby[1]).innerHTML = "";
+                            password_in = data[1];
+                        }
+
+                        let item = {
+                            'id' : id_in,
+                            'password' : password_in,
+                            'sex' : sex_in,
+                            'nation' : nation_in,
+                        }
+                        let information = localStorage.getItem('information');
+                        information = JSON.parse(information);
+                        information.push(item);
+                        console.log(information);
+                        localStorage.setItem('information',JSON.stringify(information));
+
+                            let tbody = document.getElementById('menu');
+                            let tr = document.createElement('tr');
+                            let td1 = document.createElement('td');
+                            let txt1 = document.createTextNode(information3[i].id);
+
+                            let td2 = document.createElement('td');
+                            let txt2 = document.createTextNode(information3[i].password);
+
+                            let td3 = document.createElement('td');
+                            let txt3 = document.createTextNode(information3[i].sex);
+
+                            let td4 = document.createElement('td');
+                            let txt4 = document.createTextNode(information3[i].nation);
+
+                            td1.appendChild(txt1);
+                            td2.appendChild(txt2);
+                            td3.appendChild(txt3);
+                            td4.appendChild(txt4);
+
+                            tr.appendChild(td1);
+                            tr.appendChild(td2);
+                            tr.appendChild(td3);
+                            tr.appendChild(td4);
+
+                            tbody.appendChild(tr);
+
+                        }
+
+                        let information3 = JSON.parse(localStorage.getItem('information'));
+                        for(let i = 0; i < information3.length; i ++){
+                            submit();
+                        }
+                        
+            
+        </script>
+        <!-- sau khi kiểm tra hợp lệ thì sẽ lưu thông tin nỳ vào localStorerage 
+        lưu thành đối tượng -> chuyển sang chuỗi -> lưu
+        lấy từ chuỗi -> parse thành đối tượng
+        làm thêm trang hiển thị danh sách đã thêm, sẽ lấy từ dữ liệu đã luuw trước đó và hiển thị lên  -->
+    </body>
+</html>

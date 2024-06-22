@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        .container{
+            padding:10px;
+            width:400px;
+            height:400px;
+            margin:auto;
+            display:flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: gray;
+        }
+        .results{
+            flex:1.5;
+            display:flex;
+            flex-direction: column;
+            height:50px;
+            margin-bottom:10px;
+         }
+        .result{
+            border:none;
+            margin:5px;
+            text-align: right;
+            font-size: 1.8em;
+        }
+        .rs-2{
+            margin-top:-6px;
+        }
+        .buttons{
+            display:flex;
+            flex:1;
+            justify-content: space-between;
+        }
+        .button{
+            flex:1;
+            margin:5px;
+            text-align: center;
+            font-size:1.5em;
+            width:30px;
+        }
+        .bg{
+            border-radius: 5px;
+        }
+        .bg-2{
+            border-radius:10px;
+            border:2px solid black;
+        }
+        .pink{
+            background-color: pink;
+        }
+        .blue{
+            background-color: lightblue;
+        }
+    </style>
+    <body>
+        <div class="container bg-2">
+            <div class="results">
+                <input type="text" class="result bg-1" id="resultInput">
+                <input type="text" class="result rs-2 bg-1" id="resultInput2">
+            </div>
+            <div class="buttons">
+                <button class="button bg pink" onclick="buttonHandler(this)">CLEAR</button>
+                <button class="button bg blue" onclick="buttonHandler(this)">DELETE</button>
+            </div>
+            <div class="buttons">
+                <button class="button bg" onclick="buttonHandler(this)">7</button>
+                <button class="button bg" onclick="buttonHandler(this)">8</button>
+                <button class="button bg" onclick="buttonHandler(this)">9</button>
+                <button class="button bg" onclick="buttonHandler(this)">:</button>
+            </div>
+            <div class="buttons">
+                <button class="button bg" onclick="buttonHandler(this)">4</button>
+                <button class="button bg" onclick="buttonHandler(this)">5</button>
+                <button class="button bg" onclick="buttonHandler(this)">6</button>
+                <button class="button bg" onclick="buttonHandler(this)">x</button>
+            </div>
+            <div class="buttons">
+                <button class="button bg" onclick="buttonHandler(this)">1</button>
+                <button class="button bg" onclick="buttonHandler(this)">2</button>
+                <button class="button bg" onclick="buttonHandler(this)">3</button>
+                <button class="button bg" onclick="buttonHandler(this)">-</button>
+            </div>
+            <div class="buttons">
+                <button class="button bg" onclick="buttonHandler(this)">.</button>
+                <button class="button bg" onclick="buttonHandler(this)">0</button>
+                <button class="button bg" onclick="buttonHandler(this)">=</button>
+                <button class="button bg" onclick="buttonHandler(this)">+</button>
+            </div>
+        </div>
+    </body>
+    <script>
+        let a, b;
+        let number[a];
+        let ptr[a];
+
+        function buttonHandler(btn){
+            const pressedValue = btn.innerText;
+
+            const resultInput = document.getElementById('resultInput');
+            const resultInput2 = document.getElementById('resultInput2');
+
+            if(isNaN(pressedValue)){
+                if(pressedValue = 'CLEAR'){
+                    number[a] = "";
+                    ptr[a] = "";
+                    resultInput.value = "";
+                    resultInput2.value = "";
+                }
+                if(pressedValue = '='){
+                    const result = perform(number[a], ptr[a]);
+                    resultInput2.value = result;
+                }
+            }
+
+            function perform(number[a], ptr[a]){
+                let sum = 0;
+                for(let i = 0; i < a; i ++){
+                    switch(ptr[i]){
+                        case '+': return number[i] + number[i + 1];
+                    }
+                }
+            }
+        }
+    </script>

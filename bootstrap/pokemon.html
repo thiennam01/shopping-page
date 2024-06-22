@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body{
+                background-color: red;
+            }
+            .card, .card-flip{
+                width:50px;
+                height:100px;
+                background-color: blue;
+                border-radius:8px;
+                border:5px solid white;
+                padding:10px;
+                cursor:pointer;
+                display:flex;
+                justify-content: center;
+                align-items:center;
+                color:white;
+                font-size:30px;
+                font-weight:900;
+            }
+            .card-flip{
+                display:none;
+                background-color: white;
+            }
+            /* .card:hover{
+                background-color: white;
+                transition:0.5s;
+                display:none;
+                cursor:pointer;
+            } */
+        </style>
+    </head>
+    <body>
+        <div class="card" onclick="flip(this)">?</div>
+        <div class="card-flip">>></div>
+        <div class="card" onclick="flip(this)">?</div>
+        <div class="card-flip">>></div>
+        <script>
+            let card = document.querySelectorAll('.card');
+            let cardFlip = document.querySelectorAll('.card-flip');
+
+            function flip(){
+                card.style.display = 'none';
+                cardFlip.style.display = 'flex';
+            }
+        </script>
+    </body>
+</html>

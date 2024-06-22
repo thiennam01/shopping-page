@@ -1,0 +1,225 @@
+<html>
+    <head>
+        <style>
+            .bt1{
+                border-radius:40px;
+                width:25px;
+                /* background-color: black; */
+            }
+            .bt1-img{
+                margin:auto;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="heading1">Heading 1</h1>
+        <h1 class="heading2">Heading 2</h1>
+        <form>
+            <input stype="text" placeholder="please enter name" value="" id="name" onchange="upper()">
+            <img src="8207883_camera_picture_photograph_ui_icon.png" id="img">
+        </form>
+        <button class="bt1" onclick="show()">
+            <img class="bt1-img" src="8209144_user_interface_play_video_movie_icon.png" width="20">
+        </button>
+        <button id="hello-btn" onclick="clearInterval(myfn)">
+            Hello
+        </button>
+        <button id="remove-btn">
+            click to remove
+        </button>
+        <div id="content">
+            <p> content 1</p>
+        </div>
+    </body>
+    <script>
+    //     let h12 = document.querySelector('.heading1');//trả về thành phần đầu tiên mà nó kết hợp được;
+    // //cách 5
+    // let h13 = document.querySelectorAll('.heading1');//nhiều thành phần
+    // //thay đổi text của h1;
+    // // h12.innerHTML = 'Heading 2';
+    // //thay đổi css hoặc style cho thành phần;
+    // h12.style.color = 'red';
+    // h12.style.fontSize = '40px';
+    // // trường hợp form;
+    // let name = document.getElementById('name');
+    // //gắn giá trị mới cho input;
+    // // name.value = 'Nguyen an';
+    // //lấy giá trị bên trong input 
+    // // element.value
+    // //thay đổi nguồn ảnh;
+    // let img = document.getElementById('img');
+    // img.src = '8207883_camera_picture_photograph_ui_icon.png';
+    // //phương thức write(): xuaats ra nooij dung html
+    // document.write('Hello');
+
+    //sự kiện trom DOM
+    //Alert popup thông báo nội dung tới người dùng
+    // function show(){
+         
+    //     if( h12.style.color == 'blue'){
+    //         h12.style.color = 'red';
+    //     }else {
+    //         h12.style.color = 'blue';
+    //     }
+    // }
+    //confirm : có thêm 2 nút ok, cancel, có thể xử lý logic khi người dùng chọn;
+    // function show(){
+    //     if(confirm('Bạn muốn thay đổi màu chứ không ?')){
+    //     //ok 
+    //     h12.style.color = 'blue';
+    // }else{
+    //     //cancel
+    //     h12.style.color = 'red';
+    // }
+    // }
+    //prompt : đưa cho nguwoif dùng input để nhập nội dung vào, có thể llaasy được nội dùng mà người dùng nhập;
+    // function show(){
+    //     let inp = prompt('Nhập màu bạn muốn thay đổi');
+    //     h12.style.color = inp;
+    // }
+    // sự kiện onchange, thường cho input;
+    // function upper(){
+    //     // khi người dùng nhập vào sẽ thay đổi nội dung thành chữ in hoa
+    //     name.style.textTransform = "uppercase";
+    // }
+    //vài sự kiện
+    //onload(): Khi load trang xong thì mới thực hiện script;
+    //onbclick(): nhấp 2 lần;
+    // onmouseout: hover qua text;
+    // onfocus : khi con trỏ bên trong input;
+
+    //gán 1 sự kiện vào thành phần 
+    //element.addEventListener('event_name', function());
+    // let helloBtn = document.getElementById('hello-btn');
+    // helloBtn.addEventListener('click', function(){ alert('Hello')});
+    //hoăc
+    // document.getElementById('hello-btn').addEventListener("click", function() { alert('hello')});
+
+    // thêm nhiều sự kiến tới 1 thành phần\
+    // helloBtn.addEventListener('mouseover', function(){ alert('Hello')});
+    //truyền tham số vào bên trong sự kiện để xử lý, thông qua hàm;
+    // let text = "Hello";
+    // helloBtn.addEventListener('mouseover', function(){ notify(text)});
+
+    // function notify(text){
+    //     console.log(text);
+    // }
+
+    //loại bỏ sự kiện 1 thành phần DOM
+    //element.removeEventListener
+    // document.getElementById('remove-btn').removeEventListener('mouseover', notify);
+    
+    //dùng thành phần cha thêm vào thành phần vừa tạo
+    // let p2 = document.createElement('p');
+    // //cách 1
+    // let node = document.createTextNode('Content 2');
+    // p2.appendChild(node);
+     
+
+    // //cách 2
+    // // p2.innerText = 'Content S2';
+
+    // // //content
+    // let content = document.get.ElementById('content');
+    // content.appendChild(p2);
+    // //DOM navigation
+    //     //Từ vị trí của cha truy caapj vào bất kì thành phần con, sử dụng childNodes[0, 1] 
+    //     let div = document.getElementById('content')
+    //     // let p1 = div.childNodes[0];
+    //     //trong thành phần cha có nhiều hơn 2 thành phần thì mình cũng có thể tru cập thnahf phần dầu tiên, và cuối cùng 
+    //     //với thuộc tính firstChild, lastChild
+    //     // let p1 = div.firstChild;
+    //     // let p2 = div.lastChild;
+    //     // console.log(p1)
+    //         //Trường hợp từ con ra ngoài cha 
+    //     // let p1 = document.getElementById('p1')
+    //     // console.log(p1.parentNode)
+    //     //parentNode : truy cập vào thằng cha
+    //     //trường hợp kế tiếp truy cập thành phần kế bên ( phải hoặc trái )
+    //     // let p1 = document.getElementById('p1')
+    //     // console.log(p1.nextSibling)
+    //     //nextSibling : từ p1 sang p2 
+    //     //trường hợp từ p2 về lại p1 : previousSibling
+
+    //     //JS Timing
+    //     //SetTimeout : đợi khoảng thời gian nào đó thực thi nội dung của hàm 
+    //     //SetInterval giống timeout nhưng nó lặp lại việc thực hiện
+    //     // function hello(){
+    //     //     console.log('hello')
+    //     // }
+    //     // let myfn = setInterval(hello, 2000)
+
+    //     //JSON
+    //     //JSON là 1 định dạng để truyền tải và trao đổi dữ liệu
+    //     //Dùng để trả về điịnh dạng khi mình tạo api
+    //     let object = {
+    //         "name" : "abc",
+    //         "last_name" : "abc"
+    //     }
+    //     let arr = [
+
+    //     ]
+    //     //json có thể lưu lồng nhiều cấp, hoặc có thể là nhiều đối tượng
+    //     //Cách chuyển từ text -> json
+    //     let string1 = '{"name" : "abc","last_name" : "abc"}';
+    //     let json2 = JSON.parse(string1);
+
+    //     //chuyển đổi thành đối tượng text
+    //     const obj = {name: "John", age: 30, city: "New York"};
+    //     // console.log(JSON.stringify(obj));
+    //     //các phương pháp lưu trữ biến trên trình duyệt
+    //     //localStorage, sessionStorage, Cookie
+
+    //     //localStorage : setItem(gắn giá trị)
+    //     //getItem(lấy giá trị);
+    //     localStorage.setItem('customer', JSON.stringify(obj));
+    //     //xóa biến đã lưu dùng removeItem
+
+    //     localStorage.removeItem('customer');
+    //     console.log(localStorage.getItem('customer'));
+    //     sessionStorage.setItem('customer', JSON.stringify(obj))
+    //     // lấy giá trị
+    //     // console.log(sessionStorage.getItem('customer'));
+    //     sessionStorage.removeItem('customer');
+
+    //     //localstorage :lưu ko thời hạn
+    //     //sessionStorage : lưu ơ 1 phiên, khi đóng trình duyệt
+    
+    //     //tương tác vs DOM dùng javascript
+    //     //1 framework nhỏ Jquery, viết code gọn hơn
+
+    //     $(document).ready(function(){
+    //         //cú pháp chọn 
+    //         //bắt đầu bằng dấu $('selector')
+    //         //$('#content')
+    //         //$('.content')
+    //         //$('p')
+    //         //
+    //         // let heading1 = $('.heading1').text();
+    //         //javascript
+    //         let heading1 = doucment.queySelector('.heading1').innerHTML
+    //         //.innerHTML dùng để trỏ vào nội dung bên trong thẻ
+    //         //Thay đổi dựa vào thuộc tính 
+    //         heading.text('Changed');
+    //         //Phương thức text(), .text(), text('xxxxxxx')
+    //         heading.css('color', 'red');
+    //         //xóa thành phần 
+    //         //heading1.remove();;
+    //         //thêm sự kiện
+    //         $('.heading1').click(function(){
+    //             alert($(this).text());
+    //         })
+
+    //         console.log(heading1)
+    //     })
+        // chuyển bài tập calculator sang dạng jquery để xử lý DOM
+        let text2 = `helloi world hello bloi`;
+        // let pattern2 = /hello/;
+        //tìm từ hello có match vs chuỗi đưa ra hay không
+        //match()
+        let pattern2 = /(lo|ho)/g;
+        console.log(text2.match(pattern2));
+    
+    </script>
+
+</html>

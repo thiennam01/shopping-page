@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    </head>
+    <style>
+        body{
+            display:flex;
+            height:600px;
+            justify-content: center;
+            align-items:center;
+        }
+        .slide-show{
+            position:relative;
+            width:500px;
+            overflow:hidden;
+        }
+        .list-images{
+            display:flex;
+            transition:0.5s;
+
+        }
+        .list-images img{
+            width:100%;
+        }
+        .btn:hover{
+            color:white;
+        }
+        .btn{
+            transition:0.5s;
+            color:gray;
+            font-size:40px;
+            position:absolute;
+            top:50%;
+            transform:translateY(-50%);
+            cursor:pointer;
+        }
+        .btn-left{
+            left:0;
+        }
+        .btn-right{
+            right:0;
+        }
+        .index-images{
+            position:absolute;
+            display:flex;
+            bottom:10px;
+            left:50%;
+            transform:translateX(-50%);
+        }
+        .index-item{
+            border:2px solid gray;
+            padding:10px;
+            margin:3px;
+            border-radius:50%;
+        }
+        .active{
+            background-color: gray;
+        }
+    </style>
+    <body>
+        <div class="slide-show">
+            <div class="list-images">
+                <img src="c540018ca1c7b93cb1fbc218ea0c73a7.png">
+                <img src="pexels-8moments-1323550.jpg">
+                <img src="1f6b6db831042dda9a4ce14ab2bd2bfd.png">
+                <img src="3dc449b04d9ace524a0ecd247e1fdc83.png">
+            </div>
+
+            <div class="btns">
+                <div class="btn-left btn"><i class='bx bx-chevron-left'></i></div>
+                <div class="btn-right btn"><i class='bx bx-chevron-right'></i></div>
+            </div>
+
+            <div class="index-images">
+                <div class="index-item index-item-0 active"></div>
+                <div class="index-item index-item-1"></div>
+                <div class="index-item index-item-2"></div>
+                <div class="index-item index-item-3"></div>
+            </div>
+        </div>
+    </body>
+    <script>
+        const listImage = document.querySelector('.list-images')
+        const imgs = document.getElementsByTagName('img')
+        const btnLeft = document.querySelector('.btn-left')
+        const btnRight = document.querySelector('.btn-right')
+        let current = 0;
+
+        const handleChangeSlide = () => {
+            if(current == imgs.length - 1){
+                current = 0
+                let width = imgs[0].offsetWidth
+                listImage.style.transform = `translateX(0px)`
+                document.querySelector('.active').classList.remove('active')
+                document.querySelector('.index-item-'+current).classList.add('active')
+            } else {
+                current ++
+                let width = imgs[0].offsetWidth
+                listImage.style.transform = `translateX(${width * -1 * current}px)`
+                document.querySelector('.active').classList.remove('active')
+                document.querySelector('.index-item-'+current).classList.add('active')
+            }
+        }
+        let handleEventChangeSlide = setInterval(handleChangeSlide, 4000)
+
+        btnRight.addEventListener('click', () => {
+            clearInterval(handleEventChangeSlide)
+            handleChangeSlide()
+            handleEventChangeSlide = setInterval(handleChangeSlide, 4000)
+        })
+        
+        btnLeft.addEventListener('click', () => {
+            clearInterval(handleEventChangeSlide)
+            if(current == 0){
+                current = imgs.length - 1
+                let width = imgs[0].offsetWidth
+                listImage.style.transform = `translateX(${width * -1 * current}px)`
+                document.querySelector('.active').classList.remove('active')
+                document.querySelector('.index-item-'+current).classList.add('active')
+            } else {
+                current --
+                let width = imgs[0].offsetWidth
+                listImage.style.transform = `translateX(${width * -1 * current}px)`
+                document.querySelector('.active').classList.remove('active')
+                document.querySelector('.index-item-'+current).classList.add('active')
+            }
+            handleEventChangeSlide = setInterval(handleChangeSlide, 4000)
+        })
+    </script>
+</html>
